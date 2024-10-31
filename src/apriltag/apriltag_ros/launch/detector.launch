@@ -1,0 +1,16 @@
+<launch>
+  <arg name="camera" default="/kinect_camera/rgb"/>
+  <arg name="image" default="/kinect_camera/rgb/image_raw"/>
+  <arg name="border_size" default="2"/>
+
+  <node pkg="apriltag_ros" type="apriltag_detector_node"
+    name="apriltag_detector" output="screen" ns="$(arg camera)">
+    <param name="family" type="int" value="0"/>
+    <param name="type" type="int" value="1"/>
+    <param name="black_border" type="int" value="$(arg border_size)"/>
+
+    <remap from="~image" to="$(arg image)"/>
+    <remap from="~tags" to="$(arg camera)/tags"/>
+    <remap from="~disp" to="$(arg camera)/disp"/>
+  </node>
+</launch>

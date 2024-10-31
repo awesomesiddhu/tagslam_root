@@ -1,0 +1,284 @@
+tagslam_parameters:
+# optimizer mode: full (full optimization, no iSAM2 used)
+#                 slow (use iSAM2, but test for error and use full if error is large)
+#                 fast (iSAM2 only, no test for error)
+# default: slow
+  optimizer_mode: fast
+# minimum angle [in degrees] between optical axis and tag surface
+  minimum_viewing_angle: 15.0
+# minimum tag area in pixels^2. Any tags smaller than that are ignored
+  minimum_tag_area: 1000
+# number of incremental updates before running
+# a full graph optimization (default: 50)
+  max_num_incremental_opt: 50
+# estimated error of tag corner detector
+  pixel_noise: 1.0
+# maximum allowed subgraph error. If error is above that,
+# the frame is thrown away, the measurement ignored.
+  max_subgraph_error: 50.0
+# Noise with which the subgraph absolute priors will be
+# pinned down. This parameter usually does not need to be touched.
+  subgraph_abs_prior_position_noise: 0.1
+  subgraph_abs_prior_rotation_noise: 0.1
+# if the time stamps (header.stamp) of your data messages are not
+# identical (hardware synced), set this option to true, and
+# tagslam tries to line them up as well as possible. Expect larger errors
+# because the data is not truly synchronous.
+  use_approximate_sync: true
+
+body_defaults:
+  position_noise: 0.05
+  rotation_noise: 0.01
+default_body: grasp_lab
+bodies:
+ - grasp_lab:
+     is_static: true
+     default_tag_size: 0.3243
+     pose:
+       position:
+         x: 0
+         y: 0
+         z: 0
+       rotation:
+         x: 0
+         y: 0
+         z: 0
+       position_noise:
+         x: 0.0001
+         y: 0.0001
+         z: 0.0001
+       rotation_noise:
+         x: 1.0e-05
+         y: 1.0e-05
+         z: 1.0e-05
+     type: simple
+     tags:
+     - id: 1
+       size: 0.32430000
+       pose:
+         position:
+           x: -4.410000
+           y: 0.035
+           z: 7.0
+         rotation:
+           x: 0.0
+           y: -1.57
+           z: 0.0
+         position_noise:
+           x: 1.0e-3
+           y: 1.0e-3
+           z: 1.0e-3
+         rotation_noise:
+           x: 1.0e-3
+           y: 1.0e-3
+           z: 1.0e-3
+    #  - id: 2
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 1.32
+    #        y: 0.0
+    #        z: 0.2
+    #      rotation:
+    #        x: 1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #  - id: 3
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 0.0
+    #        y: 4.0
+    #        z: 0.2
+    #      rotation:
+    #        x: 1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #  - id: 4
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 1.32
+    #        y: 4.0
+    #        z: 0.2
+    #      rotation:
+    #        x: 1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #  - id: 5
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 0.0
+    #        y: 8.0
+    #        z: 0.2
+    #      rotation:
+    #        x: 1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #  - id: 6
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 1.32
+    #        y: 8.0
+    #        z: 0.2
+    #      rotation:
+    #        x: 1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #  - id: 7
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 0
+    #        y: 12.0
+    #        z: 0.2
+    #      rotation:
+    #        x: 1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #  - id: 8
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 1.32
+    #        y: 12.0
+    #        z: 0.2
+    #      rotation:
+    #        x: 1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #  - id: 9
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 0.0
+    #        y: 16.0
+    #        z: 0.2
+    #      rotation:
+    #        x: 1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #  - id: 10
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 1.32
+    #        y: 16.0
+    #        z: 0.2
+    #      rotation:
+    #        x: 1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #  - id: 14
+    #    size: 0.32430000
+    #    pose:
+    #      position:
+    #        x: 6.85278
+    #        y: 12.0
+    #        z: 0.2
+    #      rotation:
+    #        x: -1.5708
+    #        y: 0.0
+    #        z: 0.0
+    #      position_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+    #      rotation_noise:
+    #        x: 1.0e-3
+    #        y: 1.0e-3
+    #        z: 1.0e-3
+ - base_footprint:
+     is_static: false
+     type: simple
+     odom_frame_id: base_footprint
+    #  odom_topic: "/odom"
+    #  odom_acceleration_noise_min: 5.0
+    #  odom_acceleration_noise_max: 40.0
+    #  odom_angular_acceleration_noise_min: 5.0
+    #  odom_angular_acceleration_noise_max: 40.0
+    #  odom_translation_noise: 0.001
+    #  odom_rotation_noise: 0.001
+    #  T_body_odom:
+    #    position:
+    #      x:  0.0
+    #      y:  0.0
+    #      z:  0.0
+    #    rotation:
+    #      x:  0.0
+    #      y:  0.0
+    #      z:  0.0
